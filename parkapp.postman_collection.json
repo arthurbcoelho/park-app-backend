@@ -1,165 +1,510 @@
 {
-  "info": {
-    "name": "Park App Backend",
-    "_postman_id": "b1c2d3e4-f5a6-7890-bcde-1234567890ab",
-    "description": "Coleção completa para testar todas as rotas do backend",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Vagas",
-      "item": [
-        {
-          "name": "Criar Vaga",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"codigo\": \"A01\",\n  \"coberta\": true,\n  \"comportaCamionete\": false,\n  \"isAtiva\": true,\n  \"reservada\": false\n}"
-            },
-            "url": { "raw": "http://localhost:3000/vagas", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas"] }
-          }
-        },
-        {
-          "name": "Listar Vagas",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "http://localhost:3000/vagas", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas"] }
-          }
-        },
-        {
-          "name": "Buscar Vaga por ID",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "http://localhost:3000/vagas/{{vagaId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas", "{{vagaId}}"] }
-          }
-        },
-        {
-          "name": "Atualizar Vaga",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"codigo\": \"A01\",\n  \"coberta\": false,\n  \"comportaCamionete\": true,\n  \"isAtiva\": false,\n  \"reservada\": true\n}"
-            },
-            "url": { "raw": "http://localhost:3000/vagas/{{vagaId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas", "{{vagaId}}"] }
-          }
-        },
-        {
-          "name": "Remover Vaga",
-          "request": {
-            "method": "DELETE",
-            "url": { "raw": "http://localhost:3000/vagas/{{vagaId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas", "{{vagaId}}"] }
-          }
-        }
-      ]
+    "info": {
+        "name": "Park App Backend - Full API",
+        "_postman_id": "park-app-backend-full-api-2025",
+        "description": "Coleção completa para testar todos os recursos do backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    {
-      "name": "Veiculos",
-      "item": [
+    "item": [
         {
-          "name": "Criar Veiculo",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"modelo\": \"Civic\",\n  \"marcaId\": 6,\n  \"marcaNome\": \"Honda\",\n  \"tipoId\": 2,\n  \"tipoNome\": \"Sedan\",\n  \"placa\": \"ABC1D23\",\n  \"cor\": \"Preto\",\n  \"nomeProprietario\": \"João Silva\",\n  \"contatoProprietario\": \"11999999999\"\n}"
-            },
-            "url": { "raw": "http://localhost:3000/veiculos", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["veiculos"] }
-          }
+            "name": "Usuários",
+            "item": [
+                {
+                    "name": "Criar Usuário",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"teste\",\n  \"password\": \"teste\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/users",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "users"
+                            ]
+                        }
+                    }
+                }
+            ]
         },
         {
-          "name": "Listar Veiculos",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "http://localhost:3000/veiculos", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["veiculos"] }
-          }
+            "name": "Autenticação",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"teste\",\n  \"password\": \"teste\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/auth/login",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        }
+                    }
+                }
+            ]
         },
         {
-          "name": "Buscar Veiculo por ID",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "http://localhost:3000/veiculos/{{veiculoId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["veiculos", "{{veiculoId}}"] }
-          }
+            "name": "Vagas",
+            "item": [
+                {
+                    "name": "Criar Vaga",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"codigo\": \"A01\",\n  \"coberta\": true,\n  \"comportaCamionete\": false,\n  \"isAtiva\": true,\n  \"reservada\": false\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/vagas",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar Vagas",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/vagas",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar Vaga por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/vagas/{{vagaId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas",
+                                "{{vagaId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Atualizar Vaga",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"codigo\": \"A01\",\n  \"coberta\": false,\n  \"comportaCamionete\": true,\n  \"isAtiva\": false,\n  \"reservada\": true\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/vagas/{{vagaId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas",
+                                "{{vagaId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remover Vaga",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/vagas/{{vagaId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas",
+                                "{{vagaId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
         },
         {
-          "name": "Atualizar Veiculo",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"modelo\": \"Civic\",\n  \"marcaId\": 6,\n  \"marcaNome\": \"Honda\",\n  \"tipoId\": 2,\n  \"tipoNome\": \"Sedan\",\n  \"placa\": \"DEF4G56\",\n  \"cor\": \"Branco\",\n  \"nomeProprietario\": \"João Silva\",\n  \"contatoProprietario\": \"11999999999\"\n}"
-            },
-            "url": { "raw": "http://localhost:3000/veiculos/{{veiculoId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["veiculos", "{{veiculoId}}"] }
-          }
+            "name": "Veículos",
+            "item": [
+                {
+                    "name": "Criar Veículo",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"modelo\": \"Civic\",\n  \"marcaId\": 6,\n  \"marcaNome\": \"Honda\",\n  \"tipoId\": 2,\n  \"tipoNome\": \"Sedan\",\n  \"placa\": \"ABC1D23\",\n  \"cor\": \"Preto\",\n  \"nomeProprietario\": \"João Silva\",\n  \"contatoProprietario\": \"11999999999\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/veiculos",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "veiculos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar Veículos",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/veiculos",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "veiculos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar Veículo por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/veiculos/{{veiculoId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "veiculos",
+                                "{{veiculoId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Atualizar Veículo",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"modelo\": \"Civic\",\n  \"marcaId\": 6,\n  \"marcaNome\": \"Honda\",\n  \"tipoId\": 2,\n  \"tipoNome\": \"Sedan\",\n  \"placa\": \"DEF4G56\",\n  \"cor\": \"Branco\",\n  \"nomeProprietario\": \"João Silva\",\n  \"contatoProprietario\": \"11999999999\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/veiculos/{{veiculoId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "veiculos",
+                                "{{veiculoId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remover Veículo",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/veiculos/{{veiculoId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "veiculos",
+                                "{{veiculoId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
         },
         {
-          "name": "Remover Veiculo",
-          "request": {
-            "method": "DELETE",
-            "url": { "raw": "http://localhost:3000/veiculos/{{veiculoId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["veiculos", "{{veiculoId}}"] }
-          }
+            "name": "Vagas Ocupadas",
+            "item": [
+                {
+                    "name": "Criar Vaga Ocupada",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"vagaId\": \"{{vagaId}}\",\n  \"vagaCodigo\": \"A01\",\n  \"veiculoId\": \"{{veiculoId}}\",\n  \"placaVeiculo\": \"ABC1D23\",\n  \"horaInicio\": \"2025-06-18T12:00:00.000Z\",\n  \"precoHora\": 10.5,\n  \"precoTotal\": 0,\n  \"finalizada\": false,\n  \"precoFixo\": 0\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/vagas-ocupadas",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas-ocupadas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar Vagas Ocupadas",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/vagas-ocupadas",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas-ocupadas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar Vaga Ocupada por ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/vagas-ocupadas/{{vagaOcupadaId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas-ocupadas",
+                                "{{vagaOcupadaId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Atualizar Vaga Ocupada",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"vagaId\": \"{{vagaId}}\",\n  \"vagaCodigo\": \"A01\",\n  \"veiculoId\": \"{{veiculoId}}\",\n  \"placaVeiculo\": \"ABC1D23\",\n  \"horaInicio\": \"2025-06-18T12:00:00.000Z\",\n  \"horaFim\": \"2025-06-18T14:00:00.000Z\",\n  \"precoHora\": 10.5,\n  \"precoTotal\": 21,\n  \"finalizada\": true,\n  \"precoFixo\": 0\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3000/vagas-ocupadas/{{vagaOcupadaId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas-ocupadas",
+                                "{{vagaOcupadaId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remover Vaga Ocupada",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3000/vagas-ocupadas/{{vagaOcupadaId}}",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000",
+                            "path": [
+                                "vagas-ocupadas",
+                                "{{vagaOcupadaId}}"
+                            ]
+                        }
+                    }
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "Vagas Ocupadas",
-      "item": [
+    ],
+    "variable": [
         {
-          "name": "Criar Vaga Ocupada",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"vagaId\": \"{{vagaId}}\",\n  \"vagaCodigo\": \"A01\",\n  \"veiculoId\": \"{{veiculoId}}\",\n  \"placaVeiculo\": \"ABC1D23\",\n  \"horaInicio\": \"2025-06-18T12:00:00.000Z\",\n  \"precoHora\": 10.5,\n  \"precoTotal\": 0,\n  \"finalizada\": false,\n  \"precoFixo\": 0\n}"
-            },
-            "url": { "raw": "http://localhost:3000/vagas-ocupadas", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas-ocupadas"] }
-          }
+            "key": "token",
+            "value": ""
         },
         {
-          "name": "Listar Vagas Ocupadas",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "http://localhost:3000/vagas-ocupadas", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas-ocupadas"] }
-          }
+            "key": "vagaId",
+            "value": ""
         },
         {
-          "name": "Buscar Vaga Ocupada por ID",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "http://localhost:3000/vagas-ocupadas/{{vagaOcupadaId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas-ocupadas", "{{vagaOcupadaId}}"] }
-          }
+            "key": "veiculoId",
+            "value": ""
         },
         {
-          "name": "Atualizar Vaga Ocupada",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"vagaId\": \"{{vagaId}}\",\n  \"vagaCodigo\": \"A01\",\n  \"veiculoId\": \"{{veiculoId}}\",\n  \"placaVeiculo\": \"ABC1D23\",\n  \"horaInicio\": \"2025-06-18T12:00:00.000Z\",\n  \"horaFim\": \"2025-06-18T14:00:00.000Z\",\n  \"precoHora\": 10.5,\n  \"precoTotal\": 21,\n  \"finalizada\": true,\n  \"precoFixo\": 0\n}"
-            },
-            "url": { "raw": "http://localhost:3000/vagas-ocupadas/{{vagaOcupadaId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas-ocupadas", "{{vagaOcupadaId}}"] }
-          }
-        },
-        {
-          "name": "Remover Vaga Ocupada",
-          "request": {
-            "method": "DELETE",
-            "url": { "raw": "http://localhost:3000/vagas-ocupadas/{{vagaOcupadaId}}", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["vagas-ocupadas", "{{vagaOcupadaId}}"] }
-          }
+            "key": "vagaOcupadaId",
+            "value": ""
         }
-      ]
-    }
-  ],
-  "variable": [
-    { "key": "vagaId", "value": "" },
-    { "key": "veiculoId", "value": "" },
-    { "key": "vagaOcupadaId", "value": "" }
-  ]
+    ]
 }
