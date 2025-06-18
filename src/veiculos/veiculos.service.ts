@@ -19,19 +19,19 @@ export class VeiculosService {
         return this.veiculoRepository.find();
     }
 
-    async findById(id: number) {
+    async findById(id: string) {
         const veiculo = await this.veiculoRepository.findOne({ where: { id } });
         if (!veiculo) throw new NotFoundException('Veículo não encontrado');
         return veiculo;
     }
 
-    async update(id: number, data: Partial<VeiculoEntity>) {
+    async update(id: string, data: Partial<VeiculoEntity>) {
         const veiculo = await this.findById(id);
         Object.assign(veiculo, data);
         return this.veiculoRepository.save(veiculo);
     }
 
-    async remove(id: number) {
+    async remove(id: string) {
         const veiculo = await this.findById(id);
         await this.veiculoRepository.remove(veiculo);
         return { ...veiculo, id };

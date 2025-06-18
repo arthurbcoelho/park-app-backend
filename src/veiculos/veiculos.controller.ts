@@ -18,17 +18,17 @@ export class VeiculosController {
     }
 
     @Get(':id')
-    findById(@Param('id') id: number) {
-        return this.veiculosService.findById(Number(id));
+    findById(@Param('id') id: string) {
+        return this.veiculosService.findById(id);
     }
 
     @Put(':id')
-    update(@Param('id') id: number, @Body() data: Partial<VeiculoEntity>) {
-        return this.veiculosService.update(Number(id), data);
+    update(@Param('id') id: string, @Body() data: Partial<VeiculoEntity>) {
+        return this.veiculosService.update(id, data);
     }
 
     @Delete(':id')
-    remove(@Param('id') id: number) {
-        return this.veiculosService.remove(Number(id));
+    remove(@Param('id') id: string) {
+        return this.veiculosService.remove(id);
     }
 }

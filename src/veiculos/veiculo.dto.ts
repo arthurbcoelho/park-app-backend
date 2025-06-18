@@ -2,8 +2,7 @@ import { IsInt, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class VeiculoDto {
     @IsOptional()
-    @IsInt({ message: 'O campo id deve ser um número inteiro' })
-    id?: number;
+    id?: string;
 
     @IsString({ message: 'O campo modelo deve ser uma string' })
     @IsNotEmpty({ message: 'O campo modelo é obrigatório' })
