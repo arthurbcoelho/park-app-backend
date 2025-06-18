@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
 import { VeiculosService } from './veiculos.service';
-import { VeiculoEntity } from './veiculo.entity';
+import { VeiculoDto } from './veiculo.dto';
 
 @Controller('veiculos')
 export class VeiculosController {
@@ -8,7 +8,7 @@ export class VeiculosController {
 
     @Post()
     @HttpCode(201)
-    create(@Body() data: Partial<VeiculoEntity>) {
+    create(@Body() data: VeiculoDto) {
         return this.veiculosService.create(data);
     }
 
@@ -23,7 +23,7 @@ export class VeiculosController {
     }
 
     @Put(':id')
-    update(@Param('id') id: string, @Body() data: Partial<VeiculoEntity>) {
+    update(@Param('id') id: string, @Body() data: VeiculoDto) {
         return this.veiculosService.update(id, data);
     }
 
