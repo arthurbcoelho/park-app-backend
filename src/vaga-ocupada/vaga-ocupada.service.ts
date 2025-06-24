@@ -17,8 +17,12 @@ export class VagaOcupadaService {
         return this.vagaOcupadaRepository.save(vagaOcupada);
     }
 
-    async findAll() {
-        return this.vagaOcupadaRepository.find({ relations: ['vaga', 'veiculo'] });
+    async findAll(finalizada?: string) {
+        const where: any = {};
+        if (finalizada !== undefined) {
+            where.finalizada = finalizada === 'true';
+        }
+        return this.vagaOcupadaRepository.find({ where, relations: ['vaga', 'veiculo'] });
     }
 
     async findById(id: string) {
@@ -53,13 +57,13 @@ export class VagaOcupadaService {
     }
 
     validarPrecoHoraDto(dto: VagaOcupadaDto): void {
-        if (dto.precoHora <= 0) {
+        if (dto.precoHora === null || dto.precoHora === undefined || dto.precoHora <= 0) {
             throw new BadRequestException('O preço por hora deve ser maior que zero');
         }
     }
 
     validarPrecoFixoDto(dto: VagaOcupadaDto): void {
-        if (dto.precoFixo <= 0) {
+        if (dto.precoFixo === null || dto.precoFixo === undefined || dto.precoFixo <= 0) {
             throw new BadRequestException('O preço fixo deve ser maior que zero');
         }
     }

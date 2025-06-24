@@ -24,8 +24,9 @@ export class VagaOcupadaDto {
   @IsDateString({}, { message: 'O campo horaFim deve ser uma data válida' })
   horaFim?: Date;
 
+  @IsOptional()
   @IsNumber({}, { message: 'O campo precoHora deve ser um número' })
-  precoHora: number;
+  precoHora?: number;
 
   @IsNumber({}, { message: 'O campo precoTotal deve ser um número' })
   precoTotal: number;
@@ -33,6 +34,7 @@ export class VagaOcupadaDto {
   @IsBoolean({ message: 'O campo finalizada deve ser booleano' })
   finalizada: boolean;
 
+  @IsOptional()
   @IsNumber({}, { message: 'O campo precoFixo deve ser um número' })
-  precoFixo: number;
+  precoFixo?: number;
 }

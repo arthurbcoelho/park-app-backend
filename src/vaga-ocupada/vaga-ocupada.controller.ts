@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, Query } from '@nestjs/common';
 import { VagaOcupadaService } from './vaga-ocupada.service';
 import { VagaOcupadaDto } from './vaga-ocupada.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-@UseGuards(AuthGuard('jwt'))
+
 @Controller('vagas-ocupadas')
 export class VagaOcupadaController {
   constructor(private readonly vagaOcupadaService: VagaOcupadaService) {}
@@ -15,8 +15,8 @@ export class VagaOcupadaController {
   }
 
   @Get()
-  findAll() {
-    return this.vagaOcupadaService.findAll();
+  findAll(@Query('finalizada') finalizada?: string) {
+    return this.vagaOcupadaService.findAll(finalizada);
   }
 
   @Get(':id')
