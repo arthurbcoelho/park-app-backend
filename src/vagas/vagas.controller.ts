@@ -3,7 +3,7 @@ import { VagaDto } from './vaga.dto';
 import { VagasService } from './vagas.service';
 import { AuthGuard } from '@nestjs/passport';
 
-@UseGuards(AuthGuard('jwt'))
+
 @Controller('vagas')
 export class VagasController {
     constructor(private readonly vagasService: VagasService) {
